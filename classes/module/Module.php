@@ -1495,6 +1495,16 @@ abstract class ModuleCore implements ModuleInterface
 
                         unset($tmp_module);
                     } catch (Exception $e) {
+                        $module_errors[] = Context::getContext()->getTranslator()->trans(
+                            'Error on the %1$s module : %2$s %3$s %4$s',
+                            [
+                                $module,
+                                $e->getMessage(),
+                                $e->getFile(),
+                                $e->getLine(),
+                            ],
+                            'Admin.Modules.Notification'
+                        );
                     }
                 } else {
                     $module_errors[] = Context::getContext()->getTranslator()->trans(
